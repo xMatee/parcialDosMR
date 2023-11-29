@@ -1,0 +1,26 @@
+<form [formGroup]="testsForm" (ngSubmit)="guardarTest()" class="form-inline">
+    <div class="form-group mb-2">
+        <label class="mr-2">Nombre:</label>
+        <input type="text" class="form-control" formControlName="name" />
+    </div>
+
+    <div class="form-group mb-2">
+        <label class="mr-2">Iniciales:</label>
+        <input type="text" class="form-control" formControlName="initials" />
+    </div>
+
+    <div class="form-group mb-2">
+        <label class="mr-2">Descripción:</label>
+        <input type="text" class="form-control" formControlName="description" />
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Guardar Test</button>
+    <a [routerLink]="['/admin/tests']" class="btn btn-secondary mb-2 ml-2">Cancelar</a>
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+    </div>
+
+    <span class="form-text text-danger" *ngIf="!testsForm.valid && testsForm.touched && !testsForm.pristine">
+        Asegúrate de completar todos los campos.
+    </span>
+</form>
